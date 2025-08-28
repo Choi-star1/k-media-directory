@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>K‑Media Bias Directory (MVP)</title>
+  <title>K-Media Bias Directory (MVP)</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <meta name="description" content="한국 언론사를 좌·중·우로 나눠 링크 모아보기 — 사용자가 직접 분류를 수정할 수 있는 MVP." />
+  <meta name="description" content="한국 언론사를 좌·중·우로 나눠 링크 모아보기 — 학술·교육 참고용 디렉터리." />
   <style>
     /* subtle card hover */
     .card:hover { transform: translateY(-2px); }
@@ -17,14 +17,10 @@
     <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
       <div class="flex items-center gap-2">
         <span class="text-xl">📰</span>
-        <h1 class="text-lg sm:text-xl font-semibold">K‑Media Directory</h1>
+        <h1 class="text-lg sm:text-xl font-semibold">K-Media Directory</h1>
       </div>
       <div class="hidden sm:flex items-center gap-3 text-xs text-slate-500">
         <button id="openDisclaimer" class="px-3 py-1.5 rounded-full bg-slate-900 text-white hover:bg-slate-800">안내/면책</button>
-        <a href="#" id="downloadJson" class="px-3 py-1.5 rounded-full border border-slate-300 hover:bg-slate-100">데이터 내보내기</a>
-        <label class="px-3 py-1.5 rounded-full border border-slate-300 hover:bg-slate-100 cursor-pointer">
-          JSON 불러오기<input id="uploadJson" type="file" accept="application/json" class="hidden" />
-        </label>
       </div>
     </div>
   </header>
@@ -34,10 +30,10 @@
     <section class="mb-4 grid grid-cols-1 md:grid-cols-3 gap-3">
       <div class="col-span-2 flex flex-wrap items-center gap-2">
         <button data-filter="all" class="filter-btn px-3 py-1.5 rounded-full text-sm bg-slate-900 text-white">전체</button>
-        <button data-filter="left" class="filter-btn px-3 py-1.5 rounded-full text-sm bg-rose-100 text-rose-700 border border-rose-200">좌</button>
+        <button data-filter="left" class="filter-btn px-3 py-1.5 rounded-full text-sm bg-blue-100 text-blue-700 border border-blue-200">좌</button>
         <button data-filter="center" class="filter-btn px-3 py-1.5 rounded-full text-sm bg-amber-100 text-amber-800 border border-amber-200">중</button>
-        <button data-filter="right" class="filter-btn px-3 py-1.5 rounded-full text-sm bg-indigo-100 text-indigo-800 border border-indigo-200">우</button>
-        <span class="text-xs text-slate-500 ml-2">* 분류는 <b>초기가설</b>이며 언제든 수정 가능합니다.</span>
+        <button data-filter="right" class="filter-btn px-3 py-1.5 rounded-full text-sm bg-red-100 text-red-700 border border-red-200">우</button>
+        <span class="text-xs text-slate-500 ml-2">* 분류는 <b>초기가설</b>이며, 학술·교육적 참고용입니다.</span>
       </div>
       <div class="flex items-center gap-2 justify-start md:justify-end">
         <input id="search" type="search" placeholder="언론사 검색" class="w-full md:w-64 px-3 py-2 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-300"/>
@@ -53,16 +49,6 @@
 
     <!-- Cards -->
     <section id="grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></section>
-
-    <!-- How to edit -->
-    <section class="mt-10 text-xs text-slate-500 leading-relaxed">
-      <h2 class="font-semibold text-slate-700 mb-2">편집 방법(노코드)</h2>
-      <ol class="list-decimal ml-4 space-y-1">
-        <li>오른쪽 상단의 <b>데이터 내보내기</b>로 JSON을 다운로드합니다.</li>
-        <li>메모장에서 성향(bias)을 <code>left|center|right</code> 중 하나로 원하는대로 수정합니다.</li>
-        <li><b>JSON 불러오기</b> 버튼으로 업로드하면 즉시 반영됩니다(브라우저 로컬에만 저장).</li>
-      </ol>
-    </section>
   </main>
 
   <!-- Disclaimer Modal -->
@@ -71,8 +57,8 @@
     <div class="relative bg-white max-w-xl mx-auto p-6 rounded-2xl shadow-xl">
       <h3 class="text-lg font-semibold mb-2">안내 및 면책</h3>
       <p class="text-sm text-slate-600 leading-relaxed">
-        본 디렉터리의 성향 분류는 <b>초기가설</b>로, 학술적·교육적 참고용입니다. 특정 매체·기사·개인의 입장을 단정하거나 비방하려는 목적이 아닙니다.
-        이견이 있으시면 우측 상단의 JSON 내보내기/불러오기 기능을 통해 직접 수정하여 사용하시길 권장합니다. 외부 공개 시에는 항상 출처를 확인하고 최신 정보로 업데이트하세요.
+        본 디렉터리의 성향 분류는 <b>학술적·교육적 참고용</b>입니다. 특정 매체·기사·개인의 입장을 단정하거나 비방하려는 목적이 아닙니다.
+        이견이 있으시면 <b>educhoi0617@gmail.com</b>를 통해 의견을 보내주시면 참고하겠습니다.
       </p>
       <div class="mt-4 flex justify-end gap-2">
         <button id="closeDisclaimer" class="px-3 py-1.5 rounded-lg border border-slate-300 hover:bg-slate-100">닫기</button>
@@ -81,60 +67,85 @@
   </div>
 
   <script>
-    // ======= 데이터 세트 (초기가설) =======
-    // 필요에 따라 freely 수정하세요.
+    // ======= 데이터 세트 (커뮤니티 기준 · 초기가설) =======
     const DEFAULT_DATA = [
-      { name: '연합뉴스', url: 'https://www.yna.co.kr/', bias: 'center', note: '통신사/속보 중심, 기준점으로 사용 권장' },
-      { name: 'KBS', url: 'https://news.kbs.co.kr/', bias: 'center', note: '공영방송, 사안별 차이' },
-      { name: 'MBC', url: 'https://imnews.imbc.com/', bias: 'center', note: '초기가설 — 데이터로 보정' },
-      { name: 'SBS', url: 'https://news.sbs.co.kr/', bias: 'center', note: '초기가설 — 사안별 차이' },
-      { name: '조선일보', url: 'https://www.chosun.com/', bias: 'right', note: '초기가설' },
-      { name: '중앙일보', url: 'https://www.joongang.co.kr/', bias: 'right', note: '초기가설' },
-      { name: '동아일보', url: 'https://www.donga.com/', bias: 'right', note: '초기가설' },
-      { name: '한겨레', url: 'https://www.hani.co.kr/', bias: 'left', note: '초기가설' },
-      { name: '경향신문', url: 'https://www.khan.co.kr/', bias: 'left', note: '초기가설' },
-      { name: 'JTBC', url: 'https://news.jtbc.co.kr/', bias: 'center', note: '초기가설' },
-      { name: 'YTN', url: 'https://www.ytn.co.kr/', bias: 'center', note: '초기가설' },
+      // 좌 (파랑) — 방송/신문
+      { name: 'MBC', url: 'https://imnews.imbc.com/', bias: 'left', note: '방송/신문' },
+      { name: 'JTBC', url: 'https://news.jtbc.co.kr/', bias: 'left', note: '방송/신문' },
+      { name: '한겨레', url: 'https://www.hani.co.kr/', bias: 'left', note: '방송/신문' },
+      { name: '경향신문', url: 'https://www.khan.co.kr/', bias: 'left', note: '방송/신문' },
+      // 좌 (파랑) — 온라인/탐사/매체전문
+      { name: '오마이뉴스', url: 'https://www.ohmynews.com/', bias: 'left', note: '온라인/탐사' },
+      { name: '프레시안', url: 'https://www.pressian.com/', bias: 'left', note: '온라인/탐사' },
+      { name: '미디어오늘', url: 'https://www.mediatoday.co.kr/', bias: 'left', note: '매체전문' },
+      { name: '뉴스타파', url: 'https://newstapa.org/', bias: 'left', note: '탐사' },
+      { name: '시사IN', url: 'https://www.sisain.co.kr/', bias: 'left', note: '시사/매거진' },
+
+      // 중 (노랑) — 통신/방송
+      { name: '연합뉴스', url: 'https://www.yna.co.kr/', bias: 'center', note: '통신사' },
+      { name: 'KBS', url: 'https://news.kbs.co.kr/', bias: 'center', note: '방송' },
+      { name: 'SBS', url: 'https://news.sbs.co.kr/', bias: 'center', note: '방송' },
+      { name: 'YTN', url: 'https://www.ytn.co.kr/', bias: 'center', note: '방송' },
+      { name: 'OBS', url: 'http://www.obsnews.co.kr/', bias: 'center', note: '방송' },
+      // 중 (노랑) — 종합/경제/온라인
+      { name: '서울신문', url: 'https://www.seoul.co.kr/', bias: 'center', note: '종합' },
+      { name: '한국일보', url: 'https://www.hankookilbo.com/', bias: 'center', note: '종합' },
+      { name: '머니투데이', url: 'https://news.mt.co.kr/', bias: 'center', note: '경제' },
+      { name: '이데일리', url: 'https://www.edaily.co.kr/news', bias: 'center', note: '경제' },
+      { name: '아시아경제', url: 'https://www.asiae.co.kr/news/', bias: 'center', note: '경제' },
+      { name: '파이낸셜뉴스', url: 'https://www.fnnews.com/', bias: 'center', note: '경제' },
+      { name: '헤럴드경제', url: 'https://biz.heraldcorp.com/', bias: 'center', note: '경제' },
+      { name: '아주경제', url: 'https://www.ajunews.com/', bias: 'center', note: '경제' },
+      { name: '브릿지경제', url: 'https://www.viva100.com/', bias: 'center', note: '경제' },
+      { name: '더팩트', url: 'https://www.tf.co.kr/', bias: 'center', note: '온라인' },
+
+      // 우 (빨강) — 종합/방송
+      { name: '조선일보', url: 'https://www.chosun.com/', bias: 'right', note: '종합' },
+      { name: '중앙일보', url: 'https://www.joongang.co.kr/', bias: 'right', note: '종합' },
+      { name: '동아일보', url: 'https://www.donga.com/', bias: 'right', note: '종합' },
+      { name: '세계일보', url: 'https://www.segye.com/', bias: 'right', note: '종합' },
+      { name: '국민일보', url: 'https://www.kmib.co.kr/', bias: 'right', note: '종합' },
+      { name: '문화일보', url: 'https://www.munhwa.com/', bias: 'right', note: '종합' },
+      { name: '채널A', url: 'https://www.ichannela.com/news/main/news_main.do', bias: 'right', note: '방송' },
+      { name: 'TV조선', url: 'https://news.tvchosun.com/', bias: 'right', note: '방송' },
+      { name: 'MBN', url: 'https://www.mbn.co.kr/news/all', bias: 'right', note: '방송' },
+      // 우 (빨강) — 온라인/경제
+      { name: '뉴데일리', url: 'https://www.newdaily.co.kr/', bias: 'right', note: '온라인' },
+      { name: '미디어펜', url: 'https://www.mediapen.com/', bias: 'right', note: '온라인' },
+      { name: '매일경제', url: 'https://www.mk.co.kr/news/all/', bias: 'right', note: '경제' },
+      { name: '한국경제', url: 'https://www.hankyung.com/', bias: 'right', note: '경제' }
     ];
 
-    // 로컬 저장 불러오기
-    const loadLocal = () => {
-      try { return JSON.parse(localStorage.getItem('mediaData')) || DEFAULT_DATA } catch { return DEFAULT_DATA }
-    }
-    const saveLocal = (data) => localStorage.setItem('mediaData', JSON.stringify(data))
-
-    let mediaData = loadLocal();
-    let state = { filter: 'all', query: '', sort: 'name' };
-
-    const grid = document.getElementById('grid');
-    const stats = document.getElementById('stats');
-
+    // === 표시용 유틸 ===
     function biasLabel(b){
       if(b==='left') return '좌';
       if(b==='center') return '중';
       if(b==='right') return '우';
       return b;
     }
-
+    /* 좌=파란색, 중=노랑, 우=빨강 */
     function biasChipCls(b){
       return {
-        left: 'bg-rose-100 text-rose-700 border-rose-200',
+        left: 'bg-blue-100 text-blue-700 border-blue-200',
         center: 'bg-amber-100 text-amber-800 border-amber-200',
-        right: 'bg-indigo-100 text-indigo-800 border-indigo-200'
+        right: 'bg-red-100 text-red-700 border-red-200'
       }[b] || 'bg-slate-100 text-slate-700 border-slate-200'
     }
 
+    // === 상태 및 DOM ===
+    let mediaData = DEFAULT_DATA; // 로컬스토리지 미사용(항상 이 목록 고정)
+    let state = { filter: 'all', query: '', sort: 'name' };
+    const grid = document.getElementById('grid');
+    const stats = document.getElementById('stats');
+
+    // === 렌더링 ===
     function render(){
       let items = [...mediaData];
-      // filter
       if(state.filter !== 'all') items = items.filter(x => x.bias === state.filter);
-      // search
       if(state.query) items = items.filter(x => x.name.toLowerCase().includes(state.query.toLowerCase()));
-      // sort
       if(state.sort === 'name') items.sort((a,b)=> a.name.localeCompare(b.name,'ko'));
       if(state.sort === 'bias') items.sort((a,b)=> a.bias.localeCompare(b.bias));
 
-      // stats
       const counts = {
         left: mediaData.filter(x=>x.bias==='left').length,
         center: mediaData.filter(x=>x.bias==='center').length,
@@ -142,7 +153,6 @@
       };
       stats.innerHTML = `총 <b>${mediaData.length}</b>개 매체 · 좌 <b>${counts.left}</b> · 중 <b>${counts.center}</b> · 우 <b>${counts.right}</b>`;
 
-      // grid
       grid.innerHTML = items.map(item => `
         <article class="card bg-white rounded-2xl border border-slate-200 p-4 shadow-sm transition">
           <div class="flex items-start justify-between gap-3">
@@ -152,29 +162,14 @@
             </div>
             <span class="inline-flex items-center gap-1 text-xs border px-2 py-1 rounded-full ${biasChipCls(item.bias)}">${biasLabel(item.bias)}<span class="opacity-60">(초기가설)</span></span>
           </div>
-          <div class="mt-3 flex justify-between items-center">
-            <a href="${item.url}" target="_blank" rel="noopener" class="px-3 py-2 rounded-lg bg-slate-900 text-white text-sm hover:bg-slate-800">언론사 방문</a>
-            <button class="text-xs text-slate-500 hover:text-slate-700 underline" onclick='editItem("${item.name}")'>분류 편집</button>
+          <div class="mt-3">
+            <a href="${item.url}" target="_blank" rel="noopener" class="px-3 py-2 rounded-lg bg-slate-900 text-white text-sm hover:bg-slate-800 inline-block">언론사 방문</a>
           </div>
         </article>
       `).join('');
     }
 
-    // Edit bias (simple prompt)
-    window.editItem = function(name){
-      const idx = mediaData.findIndex(x=>x.name===name);
-      if(idx<0) return;
-      const current = mediaData[idx].bias;
-      const next = prompt(`${name}의 분류를 입력하세요 (left/center/right)`, current);
-      if(!next) return;
-      const ok = ['left','center','right'];
-      if(!ok.includes(next)) { alert('left/center/right 중 하나로 입력하세요.'); return; }
-      mediaData[idx].bias = next;
-      saveLocal(mediaData);
-      render();
-    }
-
-    // controls
+    // === 컨트롤 ===
     document.querySelectorAll('.filter-btn').forEach(btn=>{
       btn.addEventListener('click', () => {
         document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('ring-2','ring-slate-300'));
@@ -183,48 +178,23 @@
         render();
       });
     });
-
     document.getElementById('search').addEventListener('input', (e)=>{
       state.query = e.target.value.trim();
       render();
     });
-
     document.getElementById('sort').addEventListener('change', (e)=>{
       state.sort = e.target.value;
       render();
     });
 
-    // disclaimer modal
+    // === 면책 모달 ===
     const modal = document.getElementById('disclaimer');
     document.getElementById('openDisclaimer').onclick = ()=>{ modal.classList.remove('hidden'); modal.classList.add('flex'); }
     document.getElementById('closeDisclaimer').onclick = ()=>{ modal.classList.add('hidden'); modal.classList.remove('flex'); }
 
-    // export/import
-    document.getElementById('downloadJson').addEventListener('click', (e)=>{
-      e.preventDefault();
-      const blob = new Blob([JSON.stringify(mediaData, null, 2)], {type:'application/json'});
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url; a.download = 'media_directory.json'; a.click();
-      URL.revokeObjectURL(url);
-    });
-
-    document.getElementById('uploadJson').addEventListener('change', (e)=>{
-      const file = e.target.files[0]; if(!file) return;
-      const reader = new FileReader();
-      reader.onload = (ev)=>{
-        try{
-          const next = JSON.parse(ev.target.result);
-          if(!Array.isArray(next)) throw new Error('배열 JSON이 필요합니다');
-          mediaData = next; saveLocal(mediaData); render();
-        }catch(err){ alert('JSON 형식 오류: ' + err.message); }
-      };
-      reader.readAsText(file, 'utf-8');
-      e.target.value = '';
-    });
-
-    // init
+    // === init ===
     render();
   </script>
 </body>
 </html>
+
